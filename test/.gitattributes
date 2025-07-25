@@ -1,3 +1,5 @@
 *.nb linguist-documentation
 *.m  linguist-documentation
 Makefile linguist-generated
+test/* linguist-vendored
+examples/* linguist-vendored
