@@ -7,8 +7,9 @@ This C++ library implements the **Ear Clipping algorithm** for polygon triangula
 ![Triangulation demo](docs/triangle.gif)
 
 This library is part of a broader framework focused on polygon splitting and triangulation, designed to support advanced mesh generation for numerical methods. It has been applied in two distinct areas:
-– [AR-for-beams](https://multi2mech.github.io/AR-simply-supported-beam-edu/documentation/index.html), a project using augmented reality and structural mechanics to visualize in real time physical beam deformation and stress state.
-– [xx-VEM](), for scientific computing with the Virtual Element Method.
+
+- [AR-for-beams](https://multi2mech.github.io/AR-simply-supported-beam-edu/documentation/index.html), a project using augmented reality and structural mechanics to visualize in real time physical beam deformation and stress state.
+- [xx-VEM](), for scientific computing with the Virtual Element Method.
 
 
 ## 📦 Structure
@@ -74,7 +75,7 @@ make benchmark
 ./build/benchmark > benchmark.csv
 ```
 
+<img src="docs/performance.png" width="300"/>
 
-![Triangulation demo](docs/performance.png)
 
 > The *Earcut++* library is marked as `MineCpp`, the same logic implemented in Mathematica is `Mine` while `Cpp` referer to [`poly2tri`](https://github.com/jhasse/poly2tri).
