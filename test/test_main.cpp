@@ -1,3 +1,5 @@
+#ifndef USE_WOLFRAM_LIB
+
 #include <iostream>
 #include <vector>
 #include "EarClippingCore.h"
@@ -5,7 +7,7 @@
 #include "Types.h"
 
 int main() {
-    // Define points (0.015 offset applied)
+    // Define points
     std::vector<Point> pts = {
         {0.915, 0.0},
         {0.915, 0.15},
@@ -17,26 +19,28 @@ int main() {
         {0.115, 0.0}
     };
 
-    // Define connectivity (1-based to 0-based indexing)
-    std::vector<size_t> conn = {0, 1, 2, 3, 4, 5, 6, 7};
+    std::vector<int> conn = {0, 1, 2, 3, 4, 5, 6, 7};
 
-    // Construct polygon
-    Polygon poly;
-    for (size_t idx : conn) {
-        poly.push_back(pts[idx]);
+    std::vector<Triangle> tris;
+    bool success = EarClipping::EarClippingTriangulate(pts, conn, tris);
+
+    if (!success) {
+        std::cerr << "Triangulation failed.\n";
+        return 1;
     }
 
-    // Triangulate
-    std::vector<Triangle> triangles = EarClipping::triangulate(poly);
-
-    // Output triangles
-    std::cout << "Triangles:\n";
-    for (const auto& tri : triangles) {
-        std::cout << "  ("
-                  << tri.a.x << ", " << tri.a.y << ") -> ("
-                  << tri.b.x << ", " << tri.b.y << ") -> ("
-                  << tri.c.x << ", " << tri.c.y << ")\n";
+    // std::cout << "Triangles:\n";
+    // for (const Triangle& tri : tris) {
+    //     std::cout << "  ("
+    //               << pts[tri.a].x << ", " << pts[tri.a].y << ") -> ("
+    //               << pts[tri.b].x << ", " << pts[tri.b].y << ") -> ("
+    //               << pts[tri.c].x << ", " << pts[tri.c].y << ")\n";
+    // }
+    std::cout << "Triangle connectivity:\n";
+    for (const Triangle& tri : tris) {
+        std::cout << "  " << tri.a << ", " << tri.b << ", " << tri.c << "\n";
     }
-
     return 0;
 }
+
+#endif // USE_WOLFRAM_LIB
