@@ -1,7 +1,7 @@
 # Earcut++
 A C++ library to triangulate polygons, that actually works.
 
-This C++ library implements the **Ear Clipping algorithm** for polygon triangulation. It's designed to be lightweight and more performant than alternatives `poly2tri`, able to easly deal with concave polygons.
+This C++ library implements the **Ear Clipping algorithm** for polygon triangulation. It's designed to be lightweight and performant, able to easly deal with concave polygons.
 
 ![Demo](imgs/README-1753372224153.png)
 
